@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden transition-colors duration-300;
+    /* Paper Texture */
+    background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
+    background-size: 24px 24px;
+    font-family: 'Patrick Hand', cursive;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Kalam', cursive;
+    font-weight: 700;
+  }
+}
+
+/* Custom scrollbar - stylized like pencil sketches */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-pencil rounded-none border-2 border-background;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent;
+}
+
+@layer utilities {
+  .border-wobbly {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+  
+  .border-wobbly-alt {
+    border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+  }
+
+  .text-gradient {
+    /* Kept for fallback, but hand-drawn usually avoids gradients */
+    background: linear-gradient(to right, #2d2d2d, #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
